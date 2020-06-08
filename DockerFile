@@ -1,0 +1,9 @@
+FROM amazonlinux
+WORKDIR /home
+COPY ./assembler.s .
+COPY ./c.c .
+RUN yum install -y gcc
+RUN yum install -y nano
+RUN yum install -y gdb
+RUN gcc assembler.s c.c -no-pie -o laba3 -g
+ENTRYPOINT /bin/bash
